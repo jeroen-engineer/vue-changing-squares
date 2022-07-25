@@ -3,7 +3,7 @@ import { ref, reactive, computed } from "vue";
 
 const containerSize = ref(500);
 const childSize = ref(100);
-const numberOfChildren = ref(25);
+const numberOfChildren = ref(30);
 const littleSquareArray = ref([]);
 const totalFittingSquares = ref("");
 
@@ -37,7 +37,7 @@ const drawContainer = () => {
   const assignStyles = () => {
     for (let i = 0, len = totalFittingSquares.value; i < len; i++) {
       let littleSquareObject = {
-        id: i,
+        id: i + 1,
         styles: {
           height: `${childSize}px`,
           width: `${childSize}px`,
@@ -56,7 +56,7 @@ const drawContainer = () => {
   let timer = null;
 
   howManySquaresText = computed(() => {
-    return totalFittingSquares === 1
+    return totalFittingSquares.value === 1
       ? `${totalFittingSquares.value} little square is in the BIG square.`
       : `${totalFittingSquares.value} little squares are in the BIG square.`;
   });
